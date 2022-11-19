@@ -1,0 +1,12 @@
+{
+  "main": "src/main.s",
+  "output": "TEST.TOS",
+  "buildDir": "build",
+  "machine": {
+    "type": "ste",
+    "ram": 512,
+    "tos": "1.62"
+  },
+  "debugger": false,
+  "exportSymbols": false
+}
