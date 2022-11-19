@@ -1,8 +1,8 @@
 # Chunked Blits
 
-This is a _test_ project to investigate the feasbility of automatically breaking HOG blits into smaller chunks, allowing large objects to be drawn without interfearing with timer B ISRs.
+This is a _test_ project to investigate the feasibility of automatically breaking HOG blits into smaller chunks, allowing large objects to be drawn without interfering with timer B ISRs.
 
-The main use-case for this is games, where an artibary number of sprites need to be blitted to a buffer without blocking interrupt driven effects, such as rasters or setting the video counter mid-frame.
+The main use-case for this is games, where an arbitrary number of sprites need to be blitted to a buffer without blocking interrupt driven effects, such as rasters or setting the video counter mid-frame.
 
 The target machine is an 8MHz STe, but the technique should also work on 16MHz processors.
 
@@ -42,7 +42,7 @@ vasmm68k_mot -Ftos -o "build/TEST.TOS" -x "src/main.s"
 2. Using this value we can compute how much data we can safely blit without impacting the IRQ.
 3. If we can complete the entire blit before the IRQ is due, just start the blitter in HOG mode and exit. Otherwise...
 4. Set `FFFF8A38` (BLITTER_Y_COUNT) to our computed value
-5. Start the blitter in HOG mode. If calcuation was correct it should complete before the interrupt.
+5. Start the blitter in HOG mode. If calculation was correct it should complete before the interrupt.
 6. Wait for the interrupt to be handled
 7. Repeat the process until all chunks are complete.
 
